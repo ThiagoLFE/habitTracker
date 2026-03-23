@@ -1,0 +1,15 @@
+# Templ generated files
+*_templ.go
+
+# Tailwind / frontend
+node_modules/
+
+# CSS build output
+static/output.css
+
+# Air temporary/build files
+tmp/
+.air.toml
+
+# OS / editor
+.zed/
