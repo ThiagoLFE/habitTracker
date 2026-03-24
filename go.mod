@@ -4,7 +4,10 @@ go 1.25.7
 
 tool github.com/a-h/templ/cmd/templ
 
-require github.com/a-h/templ v0.3.1001
+require (
+	github.com/a-h/templ v0.3.1001
+	github.com/mattn/go-sqlite3 v1.14.37
+)
 
 require (
 	github.com/a-h/parse v0.0.0-20250122154542-74294addb73e // indirect
