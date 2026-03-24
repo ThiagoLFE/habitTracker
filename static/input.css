@@ -14,7 +14,7 @@
 }
 
 .text-label {
-    @apply text-sm tracking-wide font-medium text-base-content/70;
+    @apply text-xs tracking-widest font-medium text-base-content/70;
 }
 
 .text-disabled {

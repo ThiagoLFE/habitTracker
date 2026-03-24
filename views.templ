@@ -21,23 +21,21 @@ templ Home(habits []Habit) {
 			<h1 class="text-title">Track Habits</h1>
 			<h2 class="text-subtitle">A simple habit tracker built with Go and templ.</h2>
 		</div>
-		<form action="/habit/create" method="post" class="flex w-full justify-end ">
-			<button class="btn btn-success">Create Habit</button>
-		</form>
+		<section class="flex w-full justify-end ">
+			<a class="btn btn-success" href="/habits">Create Habit</a>
+		</section>
 		<section class="card">
 			<h2 class="text-title-2">Your Habits</h2>
 			if len(habits) > 0 {
-				<table>
+				<table class="table table-zebra  mt-2">
 					<tr>
 						<th>ID</th>
 						<th>Title</th>
-						<th>Streak</th>
 					</tr>
 					for _, habit := range habits {
 						<tr>
 							<td>{ habit.ID }</td>
 							<td>{ habit.Title }</td>
-							<td>{ habit.Streak }</td>
 						</tr>
 					}
 				</table>
@@ -46,4 +44,30 @@ templ Home(habits []Habit) {
 			}
 		</section>
 	</main>
+}
+
+templ MessageError(message string) {
+	<p class="text-label text-red-500!">Error: { message }</p>
+}
+
+templ FormHabit(isCreateForm bool, messageError string, title string) {
+	<section class="m-8 p-4 ">
+		if isCreateForm {
+			<h1 class="text-title">Create Habit</h1>
+		} else {
+			<h1 class="text-title">Edit Habit</h1>
+		}
+		<form action="/habits/create" method="post" class="m-8 p-4 flex flex-col gap-2 ml-0 border border-gray-100  shadow-lg shadow-grey-200 rounded-lg">
+			<div class="flex flex-col gap-1.5">
+				<label for="title" class="text-label">Title</label>
+				<input id="title" name="title" value={ title } class="input w-full"/>
+			</div>
+			if messageError != "" {
+				@MessageError(messageError)
+			}
+			<footer class="flex w-full justify-end mt-4">
+				<button type="submit" class="btn btn-success">Create </button>
+			</footer>
+		</form>
+	</section>
 }
